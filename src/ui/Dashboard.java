@@ -34,6 +34,7 @@ public class Dashboard extends JFrame {
 
         add(sidebar, BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);
+
     }
 
     public static Dashboard getInstance() {
