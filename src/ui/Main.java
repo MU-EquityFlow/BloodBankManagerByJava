@@ -8,4 +8,5 @@ public class Main {
             Dashboard.getInstance().setVisible(true);
         });
     }
+
 }

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class UIFactory {
+
     public static JButton createMenuButton(String text) {
         JButton btn = new JButton(text);
         btn.setFocusPainted(false);

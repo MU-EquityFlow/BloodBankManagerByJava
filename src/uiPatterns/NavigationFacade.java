@@ -1,7 +1,7 @@
 package uiPatterns;
 import javax.swing.*;
 import java.awt.*;
-public class NavigationFacade {
+public class  NavigationFacade {
     private JPanel container;
     private CardLayout layout;
 
