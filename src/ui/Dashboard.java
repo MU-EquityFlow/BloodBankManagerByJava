@@ -1,9 +1,9 @@
 package ui;
 
+import java.awt.*;
+import javax.swing.*;
 import uiPatterns.NavigationFacade;
 import uiPatterns.UIFactory;
-import javax.swing.*;
-import java.awt.*;
 
 public class Dashboard extends JFrame {
     private static Dashboard instance;
@@ -18,11 +18,13 @@ public class Dashboard extends JFrame {
         CardLayout cardLayout = new CardLayout();
         JPanel contentPanel = new JPanel(cardLayout);
 
+        // --- UPDATED SCREENS ---
         contentPanel.add(UIFactory.createHeaderLabel("Welcome to MU Blood Bank"), "HOME");
-        contentPanel.add(UIFactory.createHeaderLabel("New Donor Entry Screen"), "DONOR_FORM");
+        contentPanel.add(new DonorRegistrationPanel(), "DONOR_FORM"); // Now using the real panel
         contentPanel.add(UIFactory.createHeaderLabel("Current Blood Inventory"), "STOCK_LIST");
         contentPanel.add(UIFactory.createHeaderLabel("Blood Request Form"), "BLOOD_REQUEST");
         contentPanel.add(UIFactory.createHeaderLabel("Registered Donors List"), "DONOR_LIST");
+        contentPanel.add(UIFactory.createHeaderLabel("System Settings"), "SETTINGS"); // New Screen
 
         nav = new NavigationFacade(contentPanel, cardLayout);
 
@@ -44,12 +46,17 @@ public class Dashboard extends JFrame {
 
         JButton btnDonors = UIFactory.createMenuButton("View Donors");
         btnDonors.addActionListener(e -> nav.openDonorList());
+        
+        // --- NEW MENU BUTTON ---
+        JButton btnSettings = UIFactory.createMenuButton("Settings");
+        btnSettings.addActionListener(e -> nav.openSettings());
 
         sidebar.add(btnHome);
         sidebar.add(btnReg);
         sidebar.add(btnStock);
         sidebar.add(btnRequest);
         sidebar.add(btnDonors);
+        sidebar.add(btnSettings);
 
         add(sidebar, BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);
