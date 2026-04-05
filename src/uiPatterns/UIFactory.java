@@ -20,7 +20,6 @@ public class UIFactory {
         return label;
     }
 
-    // --- NEW FACTORY METHODS ---
 
     public static JLabel createFormLabel(String text) {
         JLabel label = new JLabel(text);
