@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class UIFactory {
+
     public static JButton createMenuButton(String text) {
         JButton btn = new JButton(text);
         btn.setFocusPainted(false);
@@ -20,8 +21,6 @@ public class UIFactory {
         return label;
     }
 
-    // --- NEW FACTORY METHODS ---
-
     public static JLabel createFormLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Arial", Font.BOLD, 14));
@@ -29,19 +28,18 @@ public class UIFactory {
     }
 
     public static JTextField createTextField(int columns) {
-        JTextField textField = new JTextField(columns);
-        textField.setFont(new Font("Arial", Font.PLAIN, 14));
-        textField.setBorder(BorderFactory.createCompoundBorder(
+        JTextField tf = new JTextField(columns);
+        tf.setFont(new Font("Arial", Font.PLAIN, 14));
+        tf.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(Color.GRAY),
-            BorderFactory.createEmptyBorder(5, 5, 5, 5)
-        ));
-        return textField;
+            BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        return tf;
     }
 
     public static JButton createPrimaryButton(String text) {
         JButton btn = new JButton(text);
         btn.setFocusPainted(false);
-        btn.setBackground(new Color(180, 0, 0)); // Brand red
+        btn.setBackground(new Color(180, 0, 0));
         btn.setForeground(Color.WHITE);
         btn.setFont(new Font("Arial", Font.BOLD, 14));
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
