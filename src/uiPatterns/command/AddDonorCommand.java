@@ -1,6 +1,6 @@
-package command;
+package uiPatterns.command;
 
-import data.JsonStorage;
+import uiPatterns.data.JsonStorage;
 import model.Donor;
 
 public class AddDonorCommand implements Command {

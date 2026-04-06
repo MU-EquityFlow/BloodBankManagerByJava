@@ -1,7 +1,7 @@
 package ui;
 
-import data.JsonStorage;
-import memento.StockCaretaker;
+import uiPatterns.data.JsonStorage;
+import uiPatterns.memento.StockCaretaker;
 import model.BloodStock;
 import uiPatterns.UIFactory;
 
