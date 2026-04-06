@@ -1,53 +1,88 @@
 package ui;
 
-import uiPatterns.UIFactory;
-import javax.swing.*;
+import command.AddDonorCommand;
+import command.CommandHistory;
 import java.awt.*;
+import java.time.LocalDate;
+import java.util.UUID;
+import javax.swing.*;
+import model.Donor;
+import uiPatterns.UIFactory;
 
 public class DonorRegistrationPanel extends JPanel {
-    
+    private JTextField      nameField;
+    private JTextField      phoneField;
+    private JComboBox<String> bloodGroupCombo;
+
     public DonorRegistrationPanel() {
         setLayout(new BorderLayout(0, 20));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        // Use Factory for Header
         add(UIFactory.createHeaderLabel("Register New Donor"), BorderLayout.NORTH);
 
-        // Form Container
-        JPanel formPanel = new JPanel(new GridBagLayout());
+        JPanel form = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill   = GridBagConstraints.HORIZONTAL;
 
-        // Row 1: Name
         gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(UIFactory.createFormLabel("Full Name:"), gbc);
+        form.add(UIFactory.createFormLabel("Full Name:"), gbc);
         gbc.gridx = 1;
-        formPanel.add(UIFactory.createTextField(20), gbc);
+        nameField = UIFactory.createTextField(20);
+        form.add(nameField, gbc);
 
-        // Row 2: Blood Group
         gbc.gridx = 0; gbc.gridy = 1;
-        formPanel.add(UIFactory.createFormLabel("Blood Group:"), gbc);
+        form.add(UIFactory.createFormLabel("Blood Group:"), gbc);
         gbc.gridx = 1;
-        String[] bloodGroups = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-        JComboBox<String> bgCombo = new JComboBox<>(bloodGroups);
-        bgCombo.setFont(new Font("Arial", Font.PLAIN, 14));
-        formPanel.add(bgCombo, gbc);
+        bloodGroupCombo = new JComboBox<>(
+            new String[]{"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"});
+        bloodGroupCombo.setFont(new Font("Arial", Font.PLAIN, 14));
+        form.add(bloodGroupCombo, gbc);
 
-        // Row 3: Phone Number
         gbc.gridx = 0; gbc.gridy = 2;
-        formPanel.add(UIFactory.createFormLabel("Phone Number:"), gbc);
+        form.add(UIFactory.createFormLabel("Phone Number:"), gbc);
         gbc.gridx = 1;
-        formPanel.add(UIFactory.createTextField(20), gbc);
+        phoneField = UIFactory.createTextField(20);
+        form.add(phoneField, gbc);
 
-        // Row 4: Submit Button
         gbc.gridx = 1; gbc.gridy = 3;
-        JButton btnSubmit = UIFactory.createPrimaryButton("Save Donor");
-        btnSubmit.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this, "Donor saved successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        });
-        formPanel.add(btnSubmit, gbc);
+        JButton saveBtn = UIFactory.createPrimaryButton("Save Donor");
+        saveBtn.addActionListener(e -> registerDonor());
+        form.add(saveBtn, gbc);
 
-        add(formPanel, BorderLayout.CENTER);
+        gbc.gridx = 1; gbc.gridy = 4;
+        JButton undoBtn = new JButton("Undo Last Registration");
+        undoBtn.setFont(new Font("Arial", Font.PLAIN, 13));
+        undoBtn.addActionListener(e -> {
+            if (!CommandHistory.getInstance().canUndo()) {
+                JOptionPane.showMessageDialog(this, "Nothing to undo.",
+                    "Undo", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            CommandHistory.getInstance().undo();
+            JOptionPane.showMessageDialog(this, "Last donor registration undone.",
+                "Undo", JOptionPane.INFORMATION_MESSAGE);
+        });
+        form.add(undoBtn, gbc);
+
+        add(form, BorderLayout.CENTER);
+    }
+
+    private void registerDonor() {
+        String name  = nameField.getText().trim();
+        String phone = phoneField.getText().trim();
+        if (name.isEmpty() || phone.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields.",
+                "Validation", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Donor donor = new Donor(
+            UUID.randomUUID().toString(), name,
+            (String) bloodGroupCombo.getSelectedItem(),
+            phone, LocalDate.now().toString());
+        CommandHistory.getInstance().execute(new AddDonorCommand(donor));
+        nameField.setText("");
+        phoneField.setText("");
+        JOptionPane.showMessageDialog(this, "Donor registered successfully!",
+            "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 }
