@@ -1,8 +1,8 @@
 package ui;
 
-import command.CommandHistory;
-import command.RequestBloodCommand;
-import data.JsonStorage;
+import uiPatterns.command.CommandHistory;
+import uiPatterns.command.RequestBloodCommand;
+import uiPatterns.data.JsonStorage;
 import model.BloodRequest;
 import uiPatterns.UIFactory;
 

@@ -1,6 +1,6 @@
 package ui;
 
-import data.JsonStorage;
+import uiPatterns.data.JsonStorage;
 import model.BloodStock;
 import uiPatterns.UIFactory;
 

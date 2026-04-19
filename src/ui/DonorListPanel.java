@@ -1,6 +1,6 @@
 package ui;
 
-import data.JsonStorage;
+import uiPatterns.data.JsonStorage;
 import model.Donor;
 import uiPatterns.UIFactory;
 

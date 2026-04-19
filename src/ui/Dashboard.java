@@ -7,10 +7,11 @@ import uiPatterns.UIFactory;
 
 public class Dashboard extends JFrame {
     private static Dashboard instance;
+    private NavigationFacade nav;
 
     private Dashboard() {
         setTitle("MU Blood Bank Manager");
-        setSize(1050, 680);
+        setSize(1000, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -27,21 +28,26 @@ public class Dashboard extends JFrame {
         NavigationFacade nav = new NavigationFacade(contentPanel, cardLayout);
 
         JPanel sidebar = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 20));
-        sidebar.setPreferredSize(new Dimension(200, 680));
+        sidebar.setPreferredSize(new Dimension(200, 600));
         sidebar.setBackground(new Color(220, 220, 220));
 
-        JButton btnHome     = UIFactory.createMenuButton("Home");
-        JButton btnReg      = UIFactory.createMenuButton("Register Donor");
-        JButton btnStock    = UIFactory.createMenuButton("View Stock");
-        JButton btnRequest  = UIFactory.createMenuButton("Request Blood");
-        JButton btnDonors   = UIFactory.createMenuButton("View Donors");
-        JButton btnSettings = UIFactory.createMenuButton("Settings");
+        JButton btnHome = UIFactory.createMenuButton("Home");
+        btnHome.addActionListener(e -> nav.openHome());
 
-        btnHome    .addActionListener(e -> nav.openHome());
-        btnReg     .addActionListener(e -> nav.openDonorRegistration());
-        btnStock   .addActionListener(e -> nav.openBloodStock());
-        btnRequest .addActionListener(e -> nav.openBloodRequest());
-        btnDonors  .addActionListener(e -> nav.openDonorList());
+        JButton btnReg = UIFactory.createMenuButton("Register Donor");
+        btnReg.addActionListener(e -> nav.openDonorRegistration());
+
+        JButton btnStock = UIFactory.createMenuButton("View Stock");
+        btnStock.addActionListener(e -> nav.openBloodStock());
+
+        JButton btnRequest = UIFactory.createMenuButton("Request Blood");
+        btnRequest.addActionListener(e -> nav.openBloodRequest());
+
+        JButton btnDonors = UIFactory.createMenuButton("View Donors");
+        btnDonors.addActionListener(e -> nav.openDonorList());
+        
+        // --- NEW MENU BUTTON ---
+        JButton btnSettings = UIFactory.createMenuButton("Settings");
         btnSettings.addActionListener(e -> nav.openSettings());
 
         sidebar.add(btnHome);

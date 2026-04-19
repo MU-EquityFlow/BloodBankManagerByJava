@@ -1,7 +1,7 @@
 package ui;
 
-import command.AddDonorCommand;
-import command.CommandHistory;
+import uiPatterns.command.AddDonorCommand;
+import uiPatterns.command.CommandHistory;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.UUID;

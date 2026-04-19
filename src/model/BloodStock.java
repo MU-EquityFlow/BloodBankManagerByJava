@@ -1,6 +1,6 @@
 package model;
 
-import memento.BloodStockMemento;
+import uiPatterns.memento.BloodStockMemento;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
