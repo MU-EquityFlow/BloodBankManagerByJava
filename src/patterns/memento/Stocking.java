@@ -1,12 +1,12 @@
 package patterns.memento;
 import java.util.Stack;
-public class StockCaretaker {
-    private static StockCaretaker instance;
+public class Stocking {
+    private static Stocking instance;
     private final Stack<StockMemento> history = new Stack<>();
-    private StockCaretaker() {}
+    private Stocking() {}
 
-    public static StockCaretaker getInstance() {
-        if (instance == null) instance = new StockCaretaker();
+    public static Stocking getInstance() {
+        if (instance == null) instance = new Stocking();
         return instance;
     }
 

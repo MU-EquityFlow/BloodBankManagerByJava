@@ -29,12 +29,12 @@ public class BloodRequestPanel extends JPanel {
         JPanel form = new JPanel(new GridBagLayout());
         form.setBorder(BorderFactory.createTitledBorder("New Request"));
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(8, 8, 8, 8);
+        gbc.insets = new Insets(8, 8, 8, 2);
         gbc.fill   = GridBagConstraints.HORIZONTAL;
 
-        gbc.gridx = 0; gbc.gridy = 0;
+        gbc.gridx = 0; gbc.gridy = 0;gbc.weightx=0.0;
         form.add(UIFactory.createFormLabel("Patient Name:"), gbc);
-        gbc.gridx = 1;
+        gbc.gridx = 1;gbc.weightx=1.0;
         patientNameField = UIFactory.createTextField(15);
         form.add(patientNameField, gbc);
 
@@ -53,7 +53,7 @@ public class BloodRequestPanel extends JPanel {
 
         gbc.gridx = 6;
         JButton submitBtn = UIFactory.createPrimaryButton("Submit Request");
-        submitBtn.addActionListener(e -> submitRequest());
+        submitBtn.addActionListener(_ -> submitRequest());
         form.add(submitBtn, gbc);
 
         tableModel = new DefaultTableModel(
@@ -71,7 +71,7 @@ public class BloodRequestPanel extends JPanel {
         JButton undoReqBtn  = new JButton("Undo Last Submission");
         undoReqBtn.setFont(new Font("Arial", Font.PLAIN, 13));
 
-        fulfillBtn.addActionListener(e -> {
+        fulfillBtn.addActionListener(_ -> {
             int row = table.getSelectedRow();
             if (row < 0) {
                 JOptionPane.showMessageDialog(this, "Select a request first.",
@@ -97,7 +97,7 @@ public class BloodRequestPanel extends JPanel {
             }
         });
 
-        undoReqBtn.addActionListener(e -> {
+        undoReqBtn.addActionListener(_ -> {
             if (!CommandHistory.getInstance().canUndo()) {
                 JOptionPane.showMessageDialog(this, "Nothing to undo.",
                     "Undo", JOptionPane.INFORMATION_MESSAGE);

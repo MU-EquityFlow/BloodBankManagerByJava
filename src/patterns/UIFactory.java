@@ -39,7 +39,7 @@ public class UIFactory {
     public static JButton createPrimaryButton(String text) {
         JButton btn = new JButton(text);
         btn.setFocusPainted(false);
-        btn.setBackground(new Color(180, 0, 0)); // Brand red
+        btn.setBackground(Color.RED); // Brand red
         btn.setForeground(Color.WHITE);
         btn.setFont(new Font("Arial", Font.BOLD, 14));
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));

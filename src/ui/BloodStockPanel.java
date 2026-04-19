@@ -1,7 +1,7 @@
 package ui;
 
 import patterns.data.JsonStorage;
-import patterns.memento.StockCaretaker;
+import patterns.memento.Stocking;
 import model.BloodStock;
 import patterns.UIFactory;
 import javax.swing.*;
@@ -61,7 +61,7 @@ public class BloodStockPanel extends JPanel {
     private void applyUpdates(JTable table) {
         if (table.isEditing()) table.getCellEditor().stopCellEditing();
         BloodStock current = JsonStorage.getInstance().getStock();
-        StockCaretaker.getInstance().save(current.createMemento());
+        Stocking.getInstance().save(current.createMemento());
         BloodStock updated = new BloodStock(current.getAll());
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             String group = (String) tableModel.getValueAt(i, 0);
@@ -77,13 +77,13 @@ public class BloodStockPanel extends JPanel {
     }
 
     private void undoLastUpdate() {
-        if (!StockCaretaker.getInstance().canUndo()) {
+        if (!Stocking.getInstance().canUndo()) {
             JOptionPane.showMessageDialog(this, "Nothing to undo.",
                 "Undo", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         BloodStock stock = JsonStorage.getInstance().getStock();
-        stock.restore(StockCaretaker.getInstance().undo());
+        stock.restore(Stocking.getInstance().undo());
         JsonStorage.getInstance().saveStock(stock);
         loadStock();
         JOptionPane.showMessageDialog(this, "Stock reverted to previous state.",
