@@ -1,10 +1,10 @@
 package ui;
 
-import uiPatterns.command.CommandHistory;
-import uiPatterns.command.RequestBloodCommand;
-import uiPatterns.data.JsonStorage;
+import patterns.command.CommandHistory;
+import patterns.command.RequestBloodCommand;
+import patterns.data.JsonStorage;
 import model.BloodRequest;
-import uiPatterns.UIFactory;
+import patterns.UIFactory;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

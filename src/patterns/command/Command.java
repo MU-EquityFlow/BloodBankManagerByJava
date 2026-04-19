@@ -1,4 +1,4 @@
-package uiPatterns.command;
+package patterns.command;
 
 public interface Command {
     void execute();

@@ -1,13 +1,13 @@
 package ui;
 
-import uiPatterns.command.AddDonorCommand;
-import uiPatterns.command.CommandHistory;
+import patterns.command.AddDonorCommand;
+import patterns.command.CommandHistory;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.UUID;
 import javax.swing.*;
 import model.Donor;
-import uiPatterns.UIFactory;
+import patterns.UIFactory;
 
 public class DonorRegistrationPanel extends JPanel {
     private JTextField      nameField;

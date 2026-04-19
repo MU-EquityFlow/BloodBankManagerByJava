@@ -1,11 +1,11 @@
-package uiPatterns;
+package patterns;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class NavigationFacade {
-    private JPanel container;
-    private CardLayout layout;
+    private final JPanel container;
+    private final CardLayout layout;
 
     public NavigationFacade(JPanel container, CardLayout layout) {
         this.container = container;

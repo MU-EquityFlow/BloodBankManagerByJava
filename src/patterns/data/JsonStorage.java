@@ -1,4 +1,4 @@
-package uiPatterns.data;
+package patterns.data;
 
 import model.BloodRequest;
 import model.BloodStock;

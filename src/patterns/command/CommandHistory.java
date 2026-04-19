@@ -1,4 +1,4 @@
-package uiPatterns.command;
+package patterns.command;
 
 import java.util.Stack;
 

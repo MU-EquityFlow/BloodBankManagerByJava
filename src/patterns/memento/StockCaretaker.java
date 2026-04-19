@@ -1,4 +1,4 @@
-package uiPatterns.memento;
+package patterns.memento;
 
 import java.util.Stack;
 

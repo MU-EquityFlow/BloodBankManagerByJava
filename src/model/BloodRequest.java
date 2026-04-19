@@ -1,11 +1,11 @@
 package model;
 
 public class BloodRequest {
-    private String id;
-    private String patientName;
-    private String bloodGroup;
-    private int units;
-    private String date;
+    private final String id;
+    private final String patientName;
+    private final String bloodGroup;
+    private final int units;
+    private final String date;
     private String status;
 
     public BloodRequest(String id, String patientName, String bloodGroup,

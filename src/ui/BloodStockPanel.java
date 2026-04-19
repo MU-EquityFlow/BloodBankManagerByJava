@@ -1,10 +1,9 @@
 package ui;
 
-import uiPatterns.data.JsonStorage;
-import uiPatterns.memento.StockCaretaker;
+import patterns.data.JsonStorage;
+import patterns.memento.StockCaretaker;
 import model.BloodStock;
-import uiPatterns.UIFactory;
-
+import patterns.UIFactory;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

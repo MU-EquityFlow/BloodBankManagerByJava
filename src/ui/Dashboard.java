@@ -2,8 +2,8 @@ package ui;
 
 import java.awt.*;
 import javax.swing.*;
-import uiPatterns.NavigationFacade;
-import uiPatterns.UIFactory;
+import patterns.NavigationFacade;
+import patterns.UIFactory;
 
 public class Dashboard extends JFrame {
     
@@ -22,7 +22,6 @@ public class Dashboard extends JFrame {
         contentPanel.add(UIFactory.createHeaderLabel("Current Blood Inventory"), "STOCK_LIST");
         contentPanel.add(UIFactory.createHeaderLabel("Blood Request Form"), "BLOOD_REQUEST");
         contentPanel.add(UIFactory.createHeaderLabel("Registered Donors List"), "DONOR_LIST");
-        contentPanel.add(UIFactory.createHeaderLabel("System Settings"), "SETTINGS"); // New Screen
 
         nav = new NavigationFacade(contentPanel, cardLayout);
 
@@ -44,24 +43,19 @@ public class Dashboard extends JFrame {
 
         JButton btnDonors = UIFactory.createMenuButton("View Donors");
         btnDonors.addActionListener(e -> nav.openDonorList());
-        
-        // --- NEW MENU BUTTON ---
-        JButton btnSettings = UIFactory.createMenuButton("Settings");
-        btnSettings.addActionListener(e -> nav.openSettings());
+
 
         sidebar.add(btnHome);
         sidebar.add(btnReg);
         sidebar.add(btnStock);
         sidebar.add(btnRequest);
         sidebar.add(btnDonors);
-        sidebar.add(btnSettings);
-
         add(sidebar, BorderLayout.WEST);
         add(contentPanel, BorderLayout.CENTER);
     }
 
     public static Dashboard getInstance() {
-        if (instance == null) instance = new Dashboard();
+        if (instance==null) instance = new Dashboard();
         return instance;
     }
 }

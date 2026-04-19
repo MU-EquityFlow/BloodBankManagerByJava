@@ -1,4 +1,4 @@
-package uiPatterns;
+package patterns;
 
 import java.awt.*;
 import javax.swing.*;

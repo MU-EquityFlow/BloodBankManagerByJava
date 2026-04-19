@@ -1,8 +1,8 @@
 package ui;
 
-import uiPatterns.data.JsonStorage;
+import patterns.data.JsonStorage;
 import model.BloodStock;
-import uiPatterns.UIFactory;
+import patterns.UIFactory;
 
 import javax.swing.*;
 import java.awt.*;

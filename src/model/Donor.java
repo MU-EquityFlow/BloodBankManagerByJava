@@ -1,11 +1,11 @@
 package model;
 
 public class Donor {
-    private String id;
-    private String name;
-    private String bloodGroup;
-    private String phone;
-    private String date;
+    private final String id;
+    private final String name;
+    private final String bloodGroup;
+    private final String phone;
+    private final String date;
 
     public Donor(String id, String name, String bloodGroup, String phone, String date) {
         this.id = id;
