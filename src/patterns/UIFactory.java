@@ -45,5 +45,6 @@ public class UIFactory {
         btn.setFont(new Font("Arial", Font.BOLD, 14));
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
         return btn;
+
     }
 }
