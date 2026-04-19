@@ -17,5 +17,4 @@ public class NavigationFacade {
     public void openBloodStock()         { layout.show(container, "STOCK_LIST"); }
     public void openBloodRequest()       { layout.show(container, "BLOOD_REQUEST"); }
     public void openDonorList()          { layout.show(container, "DONOR_LIST"); }
-    public void openSettings()           { layout.show(container, "SETTINGS"); }
 }
