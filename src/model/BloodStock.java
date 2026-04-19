@@ -1,6 +1,6 @@
 package model;
 
-import patterns.memento.BloodStockMemento;
+import patterns.memento.StockMemento;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -32,11 +32,11 @@ public class BloodStock {
     public Map<String, Integer> getAll() { return new LinkedHashMap<>(units); }
     public BloodStock copy()             { return new BloodStock(units); }
 
-    public BloodStockMemento createMemento() {
-        return new BloodStockMemento(new LinkedHashMap<>(units));
+    public StockMemento createMemento() {
+        return new StockMemento(new LinkedHashMap<>(units));
     }
 
-    public void restore(BloodStockMemento m) {
+    public void restore(StockMemento m) {
         this.units = new LinkedHashMap<>(m.getState());
     }
 }

@@ -5,8 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 public class Dashboard extends JFrame {
     private static Dashboard instance;
-    private NavigationFacade nav;
-
     private Dashboard() {
         setTitle("MU Blood Bank Manager");
         setSize(1000, 600);

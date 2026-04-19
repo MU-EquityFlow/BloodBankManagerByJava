@@ -1,11 +1,8 @@
 package patterns.memento;
-
 import java.util.Stack;
-
 public class StockCaretaker {
     private static StockCaretaker instance;
-    private final Stack<BloodStockMemento> history = new Stack<>();
-
+    private final Stack<StockMemento> history = new Stack<>();
     private StockCaretaker() {}
 
     public static StockCaretaker getInstance() {
@@ -13,9 +10,9 @@ public class StockCaretaker {
         return instance;
     }
 
-    public void save(BloodStockMemento m) { history.push(m); }
+    public void save(StockMemento mem) { history.push(mem); }
 
-    public BloodStockMemento undo() {
+    public StockMemento undo() {
         return history.isEmpty() ? null : history.pop();
     }
 
