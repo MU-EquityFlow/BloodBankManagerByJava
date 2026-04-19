@@ -1,13 +1,13 @@
 package ui;
 
-import patterns.command.AddDonorCommand;
-import patterns.command.CommandHistory;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.UUID;
 import javax.swing.*;
 import model.Donor;
 import patterns.UIFactory;
+import patterns.command.AddDonorCommand;
+import patterns.command.CommandHistory;
 
 public class DonorRegistrationPanel extends JPanel {
     private JTextField      nameField;
@@ -49,20 +49,7 @@ public class DonorRegistrationPanel extends JPanel {
         saveBtn.addActionListener(e -> registerDonor());
         form.add(saveBtn, gbc);
 
-        gbc.gridx = 1; gbc.gridy = 4;
-        JButton undoBtn = new JButton("Undo Last Registration");
-        undoBtn.setFont(new Font("Arial", Font.PLAIN, 13));
-        undoBtn.addActionListener(e -> {
-            if (!CommandHistory.getInstance().canUndo()) {
-                JOptionPane.showMessageDialog(this, "Nothing to undo.",
-                    "Undo", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            CommandHistory.getInstance().undo();
-            JOptionPane.showMessageDialog(this, "Last donor registration undone.",
-                "Undo", JOptionPane.INFORMATION_MESSAGE);
-        });
-        form.add(undoBtn, gbc);
+        
 
         add(form, BorderLayout.CENTER);
     }
