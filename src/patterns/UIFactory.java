@@ -20,7 +20,6 @@ public class UIFactory {
         return label;
     }
 
-
     public static JLabel createFormLabel(String text) {
         JLabel label = new JLabel(text);
         label.setFont(new Font("Arial", Font.BOLD, 14));
